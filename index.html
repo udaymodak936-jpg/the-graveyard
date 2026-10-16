@@ -1,0 +1,1189 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Graveyard 🪦 | Official Discord Community by Uday</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        xo: {
+                            bg: '#06040c',
+                            card: '#10081c',
+                            crimson: '#ff0055',
+                            magenta: '#d946ef',
+                            violet: '#8b5cf6',
+                            cyan: '#00f2fe',
+                            emerald: '#23a55a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Strict Mobile Fit - Prevents Any Horizontal Overflow on 360px Screens */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            background-color: #06040c;
+            color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        /* Custom Neon Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06040c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff0055, #d946ef, #00f2fe);
+            border-radius: 9999px;
+        }
+
+        /* Cyber-XO Grid Background */
+        .bg-cyber-grid {
+            background-color: #06040c;
+            background-size: 34px 34px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 0, 85, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+        }
+
+        /* Floating Neon Background Orbs */
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(18px, -22px) scale(1.08); }
+        }
+        .orb-fast {
+            animation: floatOrb 7s ease-in-out infinite;
+        }
+        .orb-slow {
+            animation: floatOrb 11s ease-in-out infinite reverse;
+        }
+
+        /* Sleek Glassmorphic Cards */
+        .xo-glass {
+            background: rgba(16, 8, 28, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 0, 85, 0.35);
+            box-shadow: 0 12px 34px -8px rgba(255, 0, 85, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+        .xo-glass-cyan {
+            background: rgba(11, 13, 29, 0.84);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            box-shadow: 0 12px 34px -8px rgba(0, 242, 254, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+        .xo-glass-violet {
+            background: rgba(18, 10, 34, 0.84);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            box-shadow: 0 12px 34px -8px rgba(139, 92, 246, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+
+        /* Flowing Neon Gradient Text */
+        @keyframes flowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .text-neon-xo {
+            background: linear-gradient(90deg, #ff0055, #d946ef, #00f2fe, #8b5cf6, #ff0055);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowText 5s ease infinite;
+        }
+
+        /* Glowing CTA Button */
+        @keyframes pulseNeonBtn {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 0, 85, 0.65), 0 0 40px rgba(217, 70, 239, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 0, 85, 0.95), 0 0 55px rgba(0, 242, 254, 0.45);
+            }
+        }
+        .btn-xo-glow {
+            background: linear-gradient(135deg, #ff0055 0%, #d946ef 50%, #8b5cf6 100%);
+            animation: pulseNeonBtn 2.6s infinite;
+        }
+
+        /* 3D Button Press Bounce Effect (scale 0.93 on active) */
+        .tactile-press {
+            transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.18s ease, box-shadow 0.18s ease;
+            will-change: transform;
+        }
+        .tactile-press:active {
+            transform: scale(0.93) !important;
+            border-color: #00f2fe !important;
+            box-shadow: 0 0 24px rgba(0, 242, 254, 0.8), inset 0 0 10px rgba(255, 0, 85, 0.45) !important;
+        }
+
+        /* Mini Navbar Equalizer Animation */
+        @keyframes miniEq {
+            0%, 100% { height: 3px; }
+            50% { height: 12px; }
+        }
+        .mini-eq-bar {
+            width: 2.5px;
+            height: 4px;
+            border-radius: 9999px;
+            background: linear-gradient(to top, #ff0055, #00f2fe);
+            transition: height 0.15s ease;
+        }
+        .eq-playing .mini-eq-bar:nth-child(1) { animation: miniEq 0.42s ease-in-out infinite 0s; }
+        .eq-playing .mini-eq-bar:nth-child(2) { animation: miniEq 0.55s ease-in-out infinite 0.12s; }
+        .eq-playing .mini-eq-bar:nth-child(3) { animation: miniEq 0.36s ease-in-out infinite 0.06s; }
+
+        /* Every-Tap Shockwave Ring, 10 Particles & Floating Hype Badge */
+        @keyframes shockwaveExpand {
+            0% {
+                transform: translate(-50%, -50%) scale(0.2);
+                opacity: 1;
+                border-width: 4px;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2.6);
+                opacity: 0;
+                border-width: 1px;
+            }
+        }
+        .tap-shockwave-ring {
+            position: fixed;
+            width: 52px;
+            height: 52px;
+            border-radius: 9999px;
+            border: 3px solid #ff0055;
+            box-shadow: 0 0 18px #ff0055, inset 0 0 10px #00f2fe;
+            pointer-events: none;
+            z-index: 9998;
+            animation: shockwaveExpand 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes hypeBadgeFloat {
+            0% {
+                transform: translate(-50%, -10%) scale(0.65) rotate(-4deg);
+                opacity: 1;
+            }
+            45% {
+                transform: translate(-50%, -115%) scale(1.08) rotate(3deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -190%) scale(0.85) rotate(0deg);
+                opacity: 0;
+            }
+        }
+        .tap-hype-badge {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 0.72rem;
+            padding: 3px 9px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #ff0055, #d946ef, #00f2fe);
+            color: #ffffff;
+            box-shadow: 0 6px 16px rgba(255, 0, 85, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            white-space: nowrap;
+            animation: hypeBadgeFloat 0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .tap-neon-particle {
+            position: fixed;
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.48s ease;
+        }
+    </style>
+</head>
+<body class="bg-cyber-grid min-h-screen relative selection:bg-xo-crimson selection:text-white">
+
+    <!-- ==================== FLOATING NEON CYBER-XO BACKGROUND ORBS ==================== -->
+    <div class="fixed top-[-8%] left-[-15%] w-[280px] sm:w-[440px] h-[280px] sm:h-[440px] bg-[#ff0055]/25 rounded-full blur-[115px] pointer-events-none z-0 orb-fast"></div>
+    <div class="fixed top-[35%] right-[-15%] w-[260px] sm:w-[420px] h-[260px] sm:h-[420px] bg-[#00f2fe]/20 rounded-full blur-[125px] pointer-events-none z-0 orb-slow"></div>
+    <div class="fixed bottom-[-8%] left-[10%] w-[280px] sm:w-[440px] h-[280px] sm:h-[440px] bg-[#d946ef]/20 rounded-full blur-[120px] pointer-events-none z-0 orb-fast"></div>
+
+    <!-- Toast Notifications Area -->
+    <div id="toastContainer" class="fixed bottom-4 right-3 left-3 sm:left-auto z-[100] flex flex-col gap-2 sm:max-w-sm pointer-events-none"></div>
+
+    <!-- ==================== PERFECT MOBILE STICKY HEADER (ZERO OVERFLOW ON 360PX) ==================== -->
+    <header class="sticky top-0 z-50 w-full border-b border-pink-500/35 bg-[#06040c]/90 backdrop-blur-2xl">
+        <div class="max-w-6xl mx-auto px-2 sm:px-5 h-14 flex items-center justify-between gap-1.5">
+            
+            <!-- Left: 'The Graveyard 🪦' Badge -->
+            <a href="#top" class="tactile-press flex items-center gap-1.5 min-w-0 shrink">
+                <div class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl p-0.5 bg-gradient-to-tr from-[#ff0055] via-[#d946ef] to-[#00f2fe] shadow-md shadow-pink-600/40 shrink-0">
+                    <div class="w-full h-full rounded-[10px] bg-[#07040e] flex items-center justify-center text-sm sm:text-base">
+                        🪦
+                    </div>
+                    <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-[#23a55a] border-2 border-[#06040c] rounded-full"></span>
+                </div>
+                <div class="min-w-0">
+                    <div class="font-display font-extrabold text-[11px] sm:text-sm text-white truncate leading-tight">
+                        The Graveyard
+                    </div>
+                    <div class="text-[9px] text-pink-300/90 font-semibold truncate leading-tight">
+                        by <span class="text-[#00f2fe]">Uday</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Center: Tiny Compact Auto-Music Pill (Mini Equalizer + Song Name + Mute/Next) -->
+            <div class="flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 border border-pink-500/40 max-w-[142px] sm:max-w-[230px] shrink">
+                <!-- Mini Equalizer Bars -->
+                <div id="navEqBars" class="flex items-end gap-0.5 h-3 shrink-0 eq-playing">
+                    <div class="mini-eq-bar"></div>
+                    <div class="mini-eq-bar"></div>
+                    <div class="mini-eq-bar"></div>
+                </div>
+
+                <!-- Current Song Title -->
+                <span id="navSongLabel" onclick="skipToNextSong(event)" class="text-[10px] sm:text-xs font-mono font-bold text-cyan-300 truncate cursor-pointer select-none" title="Tap to skip song">
+                    Blinding Lights
+                </span>
+
+                <!-- Tiny Mute Button -->
+                <button onclick="toggleBgMusicMute(event)" class="tactile-press w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-[9px] text-white shrink-0" title="Mute / Unmute Music">
+                    <i id="navMuteIcon" class="fa-solid fa-volume-high text-[#00f2fe]"></i>
+                </button>
+
+                <!-- Tiny Next Track Button -->
+                <button onclick="skipToNextSong(event)" class="tactile-press w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-[9px] text-pink-300 shrink-0" title="Next Weeknd Track">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+            </div>
+
+            <!-- Right: Compact 'Join' Button -->
+            <a href="https://discord.gg/qQSy9ggJmG" target="_blank" rel="noopener noreferrer" onclick="showToast('Opening The Graveyard 🪦 Discord!', '🚀')" class="tactile-press px-2.5 sm:px-3.5 py-1.5 rounded-xl btn-xo-glow text-white font-extrabold text-[11px] sm:text-xs flex items-center gap-1 shrink-0 border border-white/30">
+                <i class="fa-brands fa-discord text-xs"></i>
+                <span>Join</span>
+            </a>
+
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="top" class="relative z-10 max-w-6xl mx-auto px-3 sm:px-6 pt-5 pb-14 space-y-9 sm:space-y-12">
+
+        <!-- 1. HERO BANNER -->
+        <section class="xo-glass rounded-3xl p-5 sm:p-9 border-2 border-[#ff0055]/60 text-center relative overflow-hidden space-y-5">
+            
+            <!-- Top Decorative Neon Bar -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ff0055] via-[#d946ef] to-[#00f2fe]"></div>
+
+            <!-- Live Status Badges -->
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#23a55a]/20 border border-[#23a55a]/60 text-emerald-300 text-[11px] font-extrabold">
+                    <span class="w-2 h-2 rounded-full bg-[#23a55a] animate-ping"></span>
+                    🟢 Online Now • Active Voice & Chat
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff0055]/20 border border-[#ff0055]/60 text-pink-200 text-[11px] font-extrabold">
+                    👑 Created by Uday
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00f2fe]/15 border border-[#00f2fe]/50 text-[#00f2fe] text-[11px] font-extrabold">
+                    🎵 Auto XO Vibe Active
+                </span>
+            </div>
+
+            <!-- Glowing Hero Title -->
+            <div class="space-y-2.5 max-w-3xl mx-auto">
+                <h1 class="font-display font-black text-3xl sm:text-6xl leading-[1.06] tracking-tight text-white">
+                    WELCOME TO <br>
+                    <span class="text-neon-xo">THE GRAVEYARD 🪦</span>
+                </h1>
+                <p class="text-gray-200 text-xs sm:text-base leading-relaxed max-w-xl mx-auto font-medium">
+                    The ultimate late-night Discord community for <strong class="text-[#ff0055]">chill hangouts</strong>, <strong class="text-[#00f2fe]">The Weeknd XO vibes</strong>, <strong class="text-[#d946ef]">non-stop gaming lobbies</strong>, aur savage banter!
+                </p>
+            </div>
+
+            <!-- Primary CTA & Copy Invite Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-xl mx-auto pt-1">
+                <a href="https://discord.gg/qQSy9ggJmG" target="_blank" rel="noopener noreferrer" onclick="showToast('Welcome to The Graveyard 🪦!', '🔥')" class="tactile-press flex-1 py-3.5 px-6 rounded-2xl btn-xo-glow text-white font-black text-sm sm:text-base flex items-center justify-center gap-2.5 border border-white/30 shadow-2xl">
+                    <i class="fa-brands fa-discord text-xl"></i>
+                    <span>Accept Invite & Join Server</span>
+                </a>
+
+                <button onclick="copyInviteLink(event)" class="tactile-press py-3.5 px-5 rounded-2xl xo-glass-cyan text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shrink-0">
+                    <i class="fa-regular fa-copy text-[#00f2fe]"></i>
+                    <span>Copy Invite Link</span>
+                </button>
+            </div>
+
+            <!-- Quick Server Highlights Strip -->
+            <div class="grid grid-cols-3 gap-2.5 max-w-2xl mx-auto pt-2">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#ff0055]">24/7</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Main Graveyard</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#d946ef]">XO VIBE</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Late Night VCs</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#00f2fe]">GAMING</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Custom Squads</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. INTERACTIVE LIVE CHANNEL PREVIEWER -->
+        <section class="space-y-4">
+            <div class="text-center max-w-2xl mx-auto space-y-1">
+                <span class="text-[11px] font-extrabold uppercase tracking-widest text-[#00f2fe]">💬 LIVE SERVER EXPERIENCE</span>
+                <h2 class="font-display font-black text-2xl sm:text-4xl text-white">
+                    Inside <span class="text-neon-xo">The Graveyard 🪦</span> Channels
+                </h2>
+                <p class="text-gray-300 text-xs sm:text-sm">
+                    Neeche kisi bhi channel tab par tap karo aur quick-chat buttons daba kar live vibe test karo!
+                </p>
+            </div>
+
+            <!-- 4 Channel Selector Tabs -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button id="tab-main-graveyard" onclick="switchChannel('main-graveyard')" class="tactile-press p-3 rounded-2xl border-2 border-[#ff0055] bg-[#ff0055]/20 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🪦・main-graveyard</div>
+                    <div class="text-[10px] text-pink-200 truncate mt-0.5">24/7 Main Chat</div>
+                </button>
+
+                <button id="tab-late-night-vibes" onclick="switchChannel('late-night-vibes')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🔥・late-night-vibes</div>
+                    <div class="text-[10px] text-gray-400 truncate mt-0.5">XO Music & Chill</div>
+                </button>
+
+                <button id="tab-gaming-lobby" onclick="switchChannel('gaming-lobby')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🎮・gaming-lobby</div>
+                    <div class="text-[10px] text-gray-400 truncate mt-0.5">Squads & Custom Rooms</div>
+                </button>
+
+                <button id="tab-media-flex" onclick="switchChannel('media-flex')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono fo```html
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Graveyard 🪦 | Official Discord Community by Uday</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        xo: {
+                            bg: '#06040c',
+                            card: '#10081c',
+                            crimson: '#ff0055',
+                            magenta: '#d946ef',
+                            violet: '#8b5cf6',
+                            cyan: '#00f2fe',
+                            emerald: '#23a55a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Strict Mobile Fit - Prevents Any Horizontal Overflow on 360px Screens */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            background-color: #06040c;
+            color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        /* Custom Neon Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06040c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff0055, #d946ef, #00f2fe);
+            border-radius: 9999px;
+        }
+
+        /* Cyber-XO Grid Background */
+        .bg-cyber-grid {
+            background-color: #06040c;
+            background-size: 34px 34px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 0, 85, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+        }
+
+        /* Floating Neon Background Orbs */
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(18px, -22px) scale(1.08); }
+        }
+        .orb-fast {
+            animation: floatOrb 7s ease-in-out infinite;
+        }
+        .orb-slow {
+            animation: floatOrb 11s ease-in-out infinite reverse;
+        }
+
+        /* Sleek Glassmorphic Cards */
+        .xo-glass {
+            background: rgba(16, 8, 28, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 0, 85, 0.35);
+            box-shadow: 0 12px 34px -8px rgba(255, 0, 85, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+        .xo-glass-cyan {
+            background: rgba(11, 13, 29, 0.84);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            box-shadow: 0 12px 34px -8px rgba(0, 242, 254, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+        .xo-glass-violet {
+            background: rgba(18, 10, 34, 0.84);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            box-shadow: 0 12px 34px -8px rgba(139, 92, 246, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+
+        /* Flowing Neon Gradient Text */
+        @keyframes flowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .text-neon-xo {
+            background: linear-gradient(90deg, #ff0055, #d946ef, #00f2fe, #8b5cf6, #ff0055);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowText 5s ease infinite;
+        }
+
+        /* Glowing CTA Button */
+        @keyframes pulseNeonBtn {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 0, 85, 0.65), 0 0 40px rgba(217, 70, 239, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 0, 85, 0.95), 0 0 55px rgba(0, 242, 254, 0.45);
+            }
+        }
+        .btn-xo-glow {
+            background: linear-gradient(135deg, #ff0055 0%, #d946ef 50%, #8b5cf6 100%);
+            animation: pulseNeonBtn 2.6s infinite;
+        }
+
+        /* 3D Button Press Bounce Effect (scale 0.93 on active) */
+        .tactile-press {
+            transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.18s ease, box-shadow 0.18s ease;
+            will-change: transform;
+        }
+        .tactile-press:active {
+            transform: scale(0.93) !important;
+            border-color: #00f2fe !important;
+            box-shadow: 0 0 24px rgba(0, 242, 254, 0.8), inset 0 0 10px rgba(255, 0, 85, 0.45) !important;
+        }
+
+        /* Mini Navbar Equalizer Animation */
+        @keyframes miniEq {
+            0%, 100% { height: 3px; }
+            50% { height: 12px; }
+        }
+        .mini-eq-bar {
+            width: 2.5px;
+            height: 4px;
+            border-radius: 9999px;
+            background: linear-gradient(to top, #ff0055, #00f2fe);
+            transition: height 0.15s ease;
+        }
+        .eq-playing .mini-eq-bar:nth-child(1) { animation: miniEq 0.42s ease-in-out infinite 0s; }
+        .eq-playing .mini-eq-bar:nth-child(2) { animation: miniEq 0.55s ease-in-out infinite 0.12s; }
+        .eq-playing .mini-eq-bar:nth-child(3) { animation: miniEq 0.36s ease-in-out infinite 0.06s; }
+
+        /* Every-Tap Shockwave Ring, 10 Particles & Floating Hype Badge */
+        @keyframes shockwaveExpand {
+            0% {
+                transform: translate(-50%, -50%) scale(0.2);
+                opacity: 1;
+                border-width: 4px;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2.6);
+                opacity: 0;
+                border-width: 1px;
+            }
+        }
+        .tap-shockwave-ring {
+            position: fixed;
+            width: 52px;
+            height: 52px;
+            border-radius: 9999px;
+            border: 3px solid #ff0055;
+            box-shadow: 0 0 18px #ff0055, inset 0 0 10px #00f2fe;
+            pointer-events: none;
+            z-index: 9998;
+            animation: shockwaveExpand 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes hypeBadgeFloat {
+            0% {
+                transform: translate(-50%, -10%) scale(0.65) rotate(-4deg);
+                opacity: 1;
+            }
+            45% {
+                transform: translate(-50%, -115%) scale(1.08) rotate(3deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -190%) scale(0.85) rotate(0deg);
+                opacity: 0;
+            }
+        }
+        .tap-hype-badge {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 0.72rem;
+            padding: 3px 9px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #ff0055, #d946ef, #00f2fe);
+            color: #ffffff;
+            box-shadow: 0 6px 16px rgba(255, 0, 85, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            white-space: nowrap;
+            animation: hypeBadgeFloat 0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .tap-neon-particle {
+            position: fixed;
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.48s ease;
+        }
+    </style>
+</head>
+<body class="bg-cyber-grid min-h-screen relative selection:bg-xo-crimson selection:text-white">
+
+    <!-- ==================== FLOATING NEON CYBER-XO BACKGROUND ORBS ==================== -->
+    <div class="fixed top-[-8%] left-[-15%] w-[280px] sm:w-[440px] h-[280px] sm:h-[440px] bg-[#ff0055]/25 rounded-full blur-[115px] pointer-events-none z-0 orb-fast"></div>
+    <div class="fixed top-[35%] right-[-15%] w-[260px] sm:w-[420px] h-[260px] sm:h-[420px] bg-[#00f2fe]/20 rounded-full blur-[125px] pointer-events-none z-0 orb-slow"></div>
+    <div class="fixed bottom-[-8%] left-[10%] w-[280px] sm:w-[440px] h-[280px] sm:h-[440px] bg-[#d946ef]/20 rounded-full blur-[120px] pointer-events-none z-0 orb-fast"></div>
+
+    <!-- Toast Notifications Area -->
+    <div id="toastContainer" class="fixed bottom-4 right-3 left-3 sm:left-auto z-[100] flex flex-col gap-2 sm:max-w-sm pointer-events-none"></div>
+
+    <!-- ==================== PERFECT MOBILE STICKY HEADER (ZERO OVERFLOW ON 360PX) ==================== -->
+    <header class="sticky top-0 z-50 w-full border-b border-pink-500/35 bg-[#06040c]/90 backdrop-blur-2xl">
+        <div class="max-w-6xl mx-auto px-2 sm:px-5 h-14 flex items-center justify-between gap-1.5">
+            
+            <!-- Left: 'The Graveyard 🪦' Badge -->
+            <a href="#top" class="tactile-press flex items-center gap-1.5 min-w-0 shrink">
+                <div class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl p-0.5 bg-gradient-to-tr from-[#ff0055] via-[#d946ef] to-[#00f2fe] shadow-md shadow-pink-600/40 shrink-0">
+                    <div class="w-full h-full rounded-[10px] bg-[#07040e] flex items-center justify-center text-sm sm:text-base">
+                        🪦
+                    </div>
+                    <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-[#23a55a] border-2 border-[#06040c] rounded-full"></span>
+                </div>
+                <div class="min-w-0">
+                    <div class="font-display font-extrabold text-[11px] sm:text-sm text-white truncate leading-tight">
+                        The Graveyard
+                    </div>
+                    <div class="text-[9px] text-pink-300/90 font-semibold truncate leading-tight">
+                        by <span class="text-[#00f2fe]">Uday</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Center: Tiny Compact Auto-Music Pill (Mini Equalizer + Song Name + Mute/Next) -->
+            <div class="flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 border border-pink-500/40 max-w-[142px] sm:max-w-[230px] shrink">
+                <!-- Mini Equalizer Bars -->
+                <div id="navEqBars" class="flex items-end gap-0.5 h-3 shrink-0 eq-playing">
+                    <div class="mini-eq-bar"></div>
+                    <div class="mini-eq-bar"></div>
+                    <div class="mini-eq-bar"></div>
+                </div>
+
+                <!-- Current Song Title -->
+                <span id="navSongLabel" onclick="skipToNextSong(event)" class="text-[10px] sm:text-xs font-mono font-bold text-cyan-300 truncate cursor-pointer select-none" title="Tap to skip song">
+                    Blinding Lights
+                </span>
+
+                <!-- Tiny Mute Button -->
+                <button onclick="toggleBgMusicMute(event)" class="tactile-press w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-[9px] text-white shrink-0" title="Mute / Unmute Music">
+                    <i id="navMuteIcon" class="fa-solid fa-volume-high text-[#00f2fe]"></i>
+                </button>
+
+                <!-- Tiny Next Track Button -->
+                <button onclick="skipToNextSong(event)" class="tactile-press w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-[9px] text-pink-300 shrink-0" title="Next Weeknd Track">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+            </div>
+
+            <!-- Right: Compact 'Join' Button -->
+            <a href="https://discord.gg/qQSy9ggJmG" target="_blank" rel="noopener noreferrer" onclick="showToast('Opening The Graveyard 🪦 Discord!', '🚀')" class="tactile-press px-2.5 sm:px-3.5 py-1.5 rounded-xl btn-xo-glow text-white font-extrabold text-[11px] sm:text-xs flex items-center gap-1 shrink-0 border border-white/30">
+                <i class="fa-brands fa-discord text-xs"></i>
+                <span>Join</span>
+            </a>
+
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="top" class="relative z-10 max-w-6xl mx-auto px-3 sm:px-6 pt-5 pb-14 space-y-9 sm:space-y-12">
+
+        <!-- 1. HERO BANNER -->
+        <section class="xo-glass rounded-3xl p-5 sm:p-9 border-2 border-[#ff0055]/60 text-center relative overflow-hidden space-y-5">
+            
+            <!-- Top Decorative Neon Bar -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ff0055] via-[#d946ef] to-[#00f2fe]"></div>
+
+            <!-- Live Status Badges -->
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#23a55a]/20 border border-[#23a55a]/60 text-emerald-300 text-[11px] font-extrabold">
+                    <span class="w-2 h-2 rounded-full bg-[#23a55a] animate-ping"></span>
+                    🟢 Online Now • Active Voice & Chat
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff0055]/20 border border-[#ff0055]/60 text-pink-200 text-[11px] font-extrabold">
+                    👑 Created by Uday
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00f2fe]/15 border border-[#00f2fe]/50 text-[#00f2fe] text-[11px] font-extrabold">
+                    🎵 Auto XO Vibe Active
+                </span>
+            </div>
+
+            <!-- Glowing Hero Title -->
+            <div class="space-y-2.5 max-w-3xl mx-auto">
+                <h1 class="font-display font-black text-3xl sm:text-6xl leading-[1.06] tracking-tight text-white">
+                    WELCOME TO <br>
+                    <span class="text-neon-xo">THE GRAVEYARD 🪦</span>
+                </h1>
+                <p class="text-gray-200 text-xs sm:text-base leading-relaxed max-w-xl mx-auto font-medium">
+                    The ultimate late-night Discord community for <strong class="text-[#ff0055]">chill hangouts</strong>, <strong class="text-[#00f2fe]">The Weeknd XO vibes</strong>, <strong class="text-[#d946ef]">non-stop gaming lobbies</strong>, aur savage banter!
+                </p>
+            </div>
+
+            <!-- Primary CTA & Copy Invite Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-xl mx-auto pt-1">
+                <a href="https://discord.gg/qQSy9ggJmG" target="_blank" rel="noopener noreferrer" onclick="showToast('Welcome to The Graveyard 🪦!', '🔥')" class="tactile-press flex-1 py-3.5 px-6 rounded-2xl btn-xo-glow text-white font-black text-sm sm:text-base flex items-center justify-center gap-2.5 border border-white/30 shadow-2xl">
+                    <i class="fa-brands fa-discord text-xl"></i>
+                    <span>Accept Invite & Join Server</span>
+                </a>
+
+                <button onclick="copyInviteLink(event)" class="tactile-press py-3.5 px-5 rounded-2xl xo-glass-cyan text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shrink-0">
+                    <i class="fa-regular fa-copy text-[#00f2fe]"></i>
+                    <span>Copy Invite Link</span>
+                </button>
+            </div>
+
+            <!-- Quick Server Highlights Strip -->
+            <div class="grid grid-cols-3 gap-2.5 max-w-2xl mx-auto pt-2">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#ff0055]">24/7</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Main Graveyard</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#d946ef]">XO VIBE</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Late Night VCs</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#00f2fe]">GAMING</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Custom Squads</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. INTERACTIVE LIVE CHANNEL PREVIEWER -->
+        <section class="space-y-4">
+            <div class="text-center max-w-2xl mx-auto space-y-1">
+                <span class="text-[11px] font-extrabold uppercase tracking-widest text-[#00f2fe]">💬 LIVE SERVER EXPERIENCE</span>
+                <h2 class="font-display font-black text-2xl sm:text-4xl text-white">
+                    Inside <span class="text-neon-xo">The Graveyard 🪦</span> Channels
+                </h2>
+                <p class="text-gray-300 text-xs sm:text-sm">
+                    Neeche kisi bhi channel tab par tap karo aur quick-chat buttons daba kar live vibe test karo!
+                </p>
+            </div>
+
+            <!-- 4 Channel Selector Tabs -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button id="tab-main-graveyard" onclick="switchChannel('main-graveyard')" class="tactile-press p-3 rounded-2xl border-2 border-[#ff0055] bg-[#ff0055]/20 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🪦・main-graveyard</div>
+                    <div class="text-[10px] text-pink-200 truncate mt-0.5">24/7 Main Chat</div>
+    ```html
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Graveyard 🪦 | Official Discord Community by Uday</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        xo: {
+                            bg: '#06040c',
+                            card: '#10081c',
+                            crimson: '#ff0055',
+                            magenta: '#d946ef',
+                            violet: '#8b5cf6',
+                            cyan: '#00f2fe',
+                            emerald: '#23a55a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Strict Mobile Fit - Prevents Any Horizontal Overflow on 360px Screens */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            background-color: #06040c;
+            color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        /* Custom Neon Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06040c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff0055, #d946ef, #00f2fe);
+            border-radius: 9999px;
+        }
+
+        /* Cyber-XO Grid Background */
+        .bg-cyber-grid {
+            background-color: #06040c;
+            background-size: 34px 34px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 0, 85, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+        }
+
+        /* Floating Neon Background Orbs */
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(18px, -22px) scale(1.08); }
+        }
+        .orb-fast {
+            animation: floatOrb 7s ease-in-out infinite;
+        }
+        .orb-slow {
+            animation: floatOrb 11s ease-in-out infinite reverse;
+        }
+
+        /* Sleek Glassmorphic Cards */
+        .xo-glass {
+            background: rgba(16, 8, 28, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 0, 85, 0.35);
+            box-shadow: 0 12px 34px -8px rgba(255, 0, 85, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+        .xo-glass-cyan {
+            background: rgba(11, 13, 29, 0.84);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            box-shadow: 0 12px 34px -8px rgba(0, 242, 254, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+        .xo-glass-violet {
+            background: rgba(18, 10, 34, 0.84);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            box-shadow: 0 12px 34px -8px rgba(139, 92, 246, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+
+        /* Flowing Neon Gradient Text */
+        @keyframes flowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .text-neon-xo {
+            background: linear-gradient(90deg, #ff0055, #d946ef, #00f2fe, #8b5cf6, #ff0055);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowText 5s ease infinite;
+        }
+
+        /* Glowing CTA Button */
+        @keyframes pulseNeonBtn {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 0, 85, 0.65), 0 0 40px rgba(217, 70, 239, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 0, 85, 0.95), 0 0 55px rgba(0, 242, 254, 0.45);
+            }
+        }
+        .btn-xo-glow {
+            background: linear-gradient(135deg, #ff0055 0%, #d946ef 50%, #8b5cf6 100%);
+            animation: pulseNeonBtn 2.6s infinite;
+        }
+
+        /* 3D Button Press Bounce Effect (scale 0.93 on active) */
+        .tactile-press {
+            transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.18s ease, box-shadow 0.18s ease;
+            will-change: transform;
+        }
+        .tactile-press:active {
+            transform: scale(0.93) !important;
+            border-color: #00f2fe !important;
+            box-shadow: 0 0 24px rgba(0, 242, 254, 0.8), inset 0 0 10px rgba(255, 0, 85, 0.45) !important;
+        }
+
+        /* Mini Navbar Equalizer Animation */
+        @keyframes miniEq {
+            0%, 100% { height: 3px; }
+            50% { height: 12px; }
+        }
+        .mini-eq-bar {
+            width: 2.5px;
+            height: 4px;
+            border-radius: 9999px;
+            background: linear-gradient(to top, #ff0055, #00f2fe);
+            transition: height 0.15s ease;
+        }
+        .eq-playing .mini-eq-bar:nth-child(1) { animation: miniEq 0.42s ease-in-out infinite 0s; }
+        .eq-playing .mini-eq-bar:nth-child(2) { animation: miniEq 0.55s ease-in-out infinite 0.12s; }
+        .eq-playing .mini-eq-bar:nth-child(3) { animation: miniEq 0.36s ease-in-out infinite 0.06s; }
+
+        /* Every-Tap Shockwave Ring, 10 Particles & Floating Hype Badge */
+        @keyframes shockwaveExpand {
+            0% {
+                transform: translate(-50%, -50%) scale(0.2);
+                opacity: 1;
+                border-width: 4px;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2.6);
+                opacity: 0;
+                border-width: 1px;
+            }
+        }
+        .tap-shockwave-ring {
+            position: fixed;
+            width: 52px;
+            height: 52px;
+            border-radius: 9999px;
+            border: 3px solid #ff0055;
+            box-shadow: 0 0 18px #ff0055, inset 0 0 10px #00f2fe;
+            pointer-events: none;
+            z-index: 9998;
+            animation: shockwaveExpand 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes hypeBadgeFloat {
+            0% {
+                transform: translate(-50%, -10%) scale(0.65) rotate(-4deg);
+                opacity: 1;
+            }
+            45% {
+                transform: translate(-50%, -115%) scale(1.08) rotate(3deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -190%) scale(0.85) rotate(0deg);
+                opacity: 0;
+            }
+        }
+        .tap-hype-badge {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 0.72rem;
+            padding: 3px 9px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #ff0055, #d946ef, #00f2fe);
+            color: #ffffff;
+            box-shadow: 0 6px 16px rgba(255, 0, 85, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            white-space: nowrap;
+            animation: hypeBadgeFloat 0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .tap-neon-particle {
+            position: fixed;
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.48s ease;
+        }
+    </style>
+</head>
+<body class="bg-cyber-grid min-h-screen relative selection:bg-xo-crimson selection:text-white">
+
+    <!-- ==================== FLOATING NEON CYBER-XO BACKGROUND ORBS ==================== -->
+    <div class="fixed top-[-8%] left-[-15%] w-[280px] sm:w-[440px] h-[280px] sm:h-[440px] bg-[#ff0055]/25 rounded-full blur-[115px] pointer-events-none z-0 orb-fast"></div>
+    <div class="fixed top-[35%] right-[-15%] w-[260px] sm:w-[420px] h-[260px] sm:h-[420px] bg-[#00f2fe]/20 rounded-full blur-[125px] pointer-events-none z-0 orb-slow"></div>
+    <div class="fixed bottom-[-8%] left-[10%] w-[280px] sm:w-[440px] h-[280px] sm:h-[440px] bg-[#d946ef]/20 rounded-full blur-[120px] pointer-events-none z-0 orb-fast"></div>
+
+    <!-- Toast Notifications Area -->
+    <div id="toastContainer" class="fixed bottom-4 right-3 left-3 sm:left-auto z-[100] flex flex-col gap-2 sm:max-w-sm pointer-events-none"></div>
+
+    <!-- ==================== PERFECT MOBILE STICKY HEADER (ZERO OVERFLOW ON 360PX) ==================== -->
+    <header class="sticky top-0 z-50 w-full border-b border-pink-500/35 bg-[#06040c]/90 backdrop-blur-2xl">
+        <div class="max-w-6xl mx-auto px-2 sm:px-5 h-14 flex items-center justify-between gap-1.5">
+            
+            <!-- Left: 'The Graveyard 🪦' Badge -->
+            <a href="#top" class="tactile-press flex items-center gap-1.5 min-w-0 shrink">
+                <div class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl p-0.5 bg-gradient-to-tr from-[#ff0055] via-[#d946ef] to-[#00f2fe] shadow-md shadow-pink-600/40 shrink-0">
+                    <div class="w-full h-full rounded-[10px] bg-[#07040e] flex items-center justify-center text-sm sm:text-base">
+                        🪦
+                    </div>
+                    <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-[#23a55a] border-2 border-[#06040c] rounded-full"></span>
+                </div>
+                <div class="min-w-0">
+                    <div class="font-display font-extrabold text-[11px] sm:text-sm text-white truncate leading-tight">
+                        The Graveyard
+                    </div>
+                    <div class="text-[9px] text-pink-300/90 font-semibold truncate leading-tight">
+                        by <span class="text-[#00f2fe]">Uday</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Center: Tiny Compact Auto-Music Pill (Mini Equalizer + Song Name + Mute/Next) -->
+            <div class="flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 border border-pink-500/40 max-w-[142px] sm:max-w-[230px] shrink">
+                <!-- Mini Equalizer Bars -->
+                <div id="navEqBars" class="flex items-end gap-0.5 h-3 shrink-0 eq-playing">
+                    <div class="mini-eq-bar"></div>
+                    <div class="mini-eq-bar"></div>
+                    <div class="mini-eq-bar"></div>
+                </div>
+
+                <!-- Current Song Title -->
+                <span id="navSongLabel" onclick="skipToNextSong(event)" class="text-[10px] sm:text-xs font-mono font-bold text-cyan-300 truncate cursor-pointer select-none" title="Tap to skip song">
+                    Blinding Lights
+                </span>
+
+                <!-- Tiny Mute Button -->
+                <button onclick="toggleBgMusicMute(event)" class="tactile-press w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-[9px] text-white shrink-0" title="Mute / Unmute Music">
+                    <i id="navMuteIcon" class="fa-solid fa-volume-high text-[#00f2fe]"></i>
+                </button>
+
+                <!-- Tiny Next Track Button -->
+                <button onclick="skipToNextSong(event)" class="tactile-press w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-[9px] text-pink-300 shrink-0" title="Next Weeknd Track">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+            </div>
+
+            <!-- Right: Compact 'Join' Button -->
+            <a href="https://discord.gg/qQSy9ggJmG" target="_blank" rel="noopener noreferrer" onclick="showToast('Opening The Graveyard 🪦 Discord!', '🚀')" class="tactile-press px-2.5 sm:px-3.5 py-1.5 rounded-xl btn-xo-glow text-white font-extrabold text-[11px] sm:text-xs flex items-center gap-1 shrink-0 border border-white/30">
+                <i class="fa-brands fa-discord text-xs"></i>
+                <span>Join</span>
+            </a>
+
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="top" class="relative z-10 max-w-6xl mx-auto px-3 sm:px-6 pt-5 pb-14 space-y-9 sm:space-y-12">
+
+        <!-- 1. HERO BANNER -->
+        <section class="xo-glass rounded-3xl p-5 sm:p-9 border-2 border-[#ff0055]/60 text-center relative overflow-hidden space-y-5">
+            
+            <!-- Top Decorative Neon Bar -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ff0055] via-[#d946ef] to-[#00f2fe]"></div>
+
+            <!-- Live Status Badges -->
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#23a55a]/20 border border-[#23a55a]/60 text-emerald-300 text-[11px] font-extrabold">
+                    <span class="w-2 h-2 rounded-full bg-[#23a55a] animate-ping"></span>
+                    🟢 Online Now • Active Voice & Chat
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff0055]/20 border border-[#ff0055]/60 text-pink-200 text-[11px] font-extrabold">
+                    👑 Created by Uday
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00f2fe]/15 border border-[#00f2fe]/50 text-[#00f2fe] text-[11px] font-extrabold">
+                    🎵 Auto XO Vibe Active
+                </span>
+            </div>
+
+            <!-- Glowing Hero Title -->
+            <div class="space-y-2.5 max-w-3xl mx-auto">
+                <h1 class="font-display font-black text-3xl sm:text-6xl leading-[1.06] tracking-tight text-white">
+                    WELCOME TO <br>
+                    <span class="text-neon-xo">THE GRAVEYARD 🪦</span>
+                </h1>
+                <p class="text-gray-200 text-xs sm:text-base leading-relaxed max-w-xl mx-auto font-medium">
+                    The ultimate late-night Discord community for <strong class="text-[#ff0055]">chill hangouts</strong>, <strong class="text-[#00f2fe]">The Weeknd XO vibes</strong>, <strong class="text-[#d946ef]">non-stop gaming lobbies</strong>, aur savage banter!
+                </p>
+            </div>
+
+            <!-- Primary CTA & Copy Invite Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-xl mx-auto pt-1">
+                <a href="https://discord.gg/qQSy9ggJmG" target="_blank" rel="noopener noreferrer" onclick="showToast('Welcome to The Graveyard 🪦!', '🔥')" class="tactile-press flex-1 py-3.5 px-6 rounded-2xl btn-xo-glow text-white font-black text-sm sm:text-base flex items-center justify-center gap-2.5 border border-white/30 shadow-2xl">
+                    <i class="fa-brands fa-discord text-xl"></i>
+                    <span>Accept Invite & Join Server</span>
+                </a>
+
+                <button onclick="copyInviteLink(event)" class="tactile-press py-3.5 px-5 rounded-2xl xo-glass-cyan text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shrink-0">
+                    <i class="fa-regular fa-copy text-[#00f2fe]"></i>
+                    <span>Copy Invite Link</span>
+                </button>
+            </div>
+
+            <!-- Quick Server Highlights Strip -->
+            <div class="grid grid-cols-3 gap-2.5 max-w-2xl mx-auto pt-2">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#ff0055]">24/7</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Main Graveyard</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#d946ef]">XO VIBE</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Late Night VCs</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5">
+                    <div class="font-display font-black text-sm sm:text-lg text-[#00f2fe]">GAMING</div>
+                    <div class="text-[10px] text-gray-300 font-semibold">Custom Squads</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. INTERACTIVE LIVE CHANNEL PREVIEWER -->
+        <section class="space-y-4">
+            <div class="text-center max-w-2xl mx-auto space-y-1">
+                <span class="text-[11px] font-extrabold uppercase tracking-widest text-[#00f2fe]">💬 LIVE SERVER EXPERIENCE</span>
+                <h2 class="font-display font-black text-2xl sm:text-4xl text-white">
+                    Inside <span class="text-neon-xo">The Graveyard 🪦</span> Channels
+                </h2>
+                <p class="text-gray-300 text-xs sm:text-sm">
+                    Neeche kisi bhi channel tab par tap karo aur quick-chat buttons daba kar live vibe test karo!
+                </p>
+            </div>
+
+            <!-- 4 Channel Selector Tabs -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button id="tab-main-graveyard" onclick="switchChannel('main-graveyard')" class="tactile-press p-3 rounded-2xl border-2 border-[#ff0055] bg-[#ff0055]/20 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🪦・main-graveyard</div>
+                    <div class="text-[10px] text-pink-200 truncate mt-0.5">24/7 Main Chat</div>
+                </button>
+
+                <button id="tab-late-night-vibes" onclick="switchChannel('late-night-vibes')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🔥・late-night-vibes</div>
+                    <div class="text-[10px] text-gray-400 truncate mt-0.5">XO Music & Chill</div>
+                </button>
+
+                <button id="tab-gaming-lobby" onclick="switchChannel('gaming-lobby')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🎮・gaming-lobby</div>
+                    <div class="text-[10px] text-gray-400 truncate mt-0.5">Squads & Custom Rooms</div>
+                </button>
+
+                <button id="tab-media-flex" onclick="switchChannel('media-flex')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono fo            </button>
+
+                <button id="tab-late-night-vibes" onclick="switchChannel('late-night-vibes')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🔥・late-night-vibes</div>
+                    <div class="text-[10px] text-gray-400 truncate mt-0.5">XO Music & Chill</div>
+                </button>
+
+                <button id="tab-gaming-lobby" onclick="switchChannel('gaming-lobby')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono font-extrabold text-xs text-white truncate">#🎮・gaming-lobby</div>
+                    <div class="text-[10px] text-gray-400 truncate mt-0.5">Squads & Custom Rooms</div>
+                </button>
+
+                <button id="tab-media-flex" onclick="switchChannel('media-flex')" class="tactile-press p-3 rounded-2xl border border-white/15 bg-white/5 text-left transition">
+                    <div class="font-mono fo
