@@ -1,448 +1,144 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>The Graveyard 🪦 | Official Discord</title>
-  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-  <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700;800&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700;800&display=swap)" rel="stylesheet">
-  <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css)">
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            xo: {
-              black: '#07050d',
-              card: '#0f0a1c',
-              pink: '#ff0055',
-              cyan: '#00f2fe',
-              purple: '#7928ca'
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    body {
-      background-color: #07050d;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(121, 40, 202, 0.22) 0%, transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(255, 0, 85, 0.18) 0%, transparent 50%),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
-
-    .shockwave-ring {
-      position: fixed;
-      pointer-events: none;
-      border-radius: 50%;
-      border: 2px solid #00f2fe;
-      box-shadow: 0 0 20px #ff0055, inset 0 0 15px #00f2fe;
-      transform: translate(-50%, -50%) scale(0.1);
-      animation: shockwave 0.55s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-      z-index: 99999;
-    }
-
-    @keyframes shockwave {
-      0% { transform: translate(-50%, -50%) scale(0.1); opacity: 1; }
-      100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
-    }
-
-    .touch-sparkle {
-      position: fixed;
-      pointer-events: none;
-      border-radius: 50%;
-      z-index: 99999;
-      animation: sparkle 0.6s ease-out forwards;
-    }
-
-    @keyframes sparkle {
-      0% { transform: translate(0, 0) scale(1); opacity: 1; }
-      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-    }
-
-    .pop-badge {
-      position: fixed;
-      pointer-events: none;
-      z-index: 99999;
-      font-weight: 900;
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 9999px;
-      animation: floatBadge 0.65s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-    }
-
-    @keyframes floatBadge {
-      0% { transform: translate(-50%, -10px) scale(0.6); opacity: 0; }
-      30% { transform: translate(-50%, -35px) scale(1.1); opacity: 1; }
-      100% { transform: translate(-50%, -60px) scale(0.8); opacity: 0; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>The Graveyard 🪦 | Official Discord</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;user-select:none}
+body{background:#070510 radial-gradient(circle at 50% 0%,rgba(121,40,202,.4),transparent 70%);color:#fff;font-family:system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;overflow-x:hidden}
+header{position:sticky;top:0;z-index:50;padding:10px 14px;backdrop-filter:blur(12px);background:rgba(7,5,16,.85);border-bottom:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:8px}
+.logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#ff0055,#7928ca);display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px #ff0055}
+.pill{background:rgba(255,255,255,.08);border:1px solid rgba(0,242,254,.4);border-radius:30px;padding:5px 12px;font-size:11px;color:#00f2fe;font-weight:700;cursor:pointer}
+.btn-top{background:linear-gradient(90deg,#ff0055,#7928ca);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:800;text-decoration:none;box-shadow:0 0 12px rgba(255,0,85,.5)}
+main{max-width:460px;margin:0 auto;padding:18px 14px;display:flex;flex-direction:column;gap:18px;width:100%}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:22px 16px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.live-tag{display:inline-block;padding:4px 10px;border-radius:20px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.4);color:#34d399;font-size:11px;font-weight:700;margin-bottom:10px}
+h2{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:8px}
+.neon{background:linear-gradient(90deg,#00f2fe,#ff0055,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:13px;color:#d1d5db;line-height:1.5;margin-bottom:18px}
+.cta{display:block;width:100%;background:linear-gradient(90deg,#ff0055,#7928ca,#00f2fe);color:#fff;text-decoration:none;padding:14px;border-radius:16px;font-weight:800;font-size:14px;margin-bottom:10px;box-shadow:0 0 20px rgba(255,0,85,.5)}
+.copy{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;padding:11px;border-radius:12px;font-weight:700;font-size:12px;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
+.sbox{background:rgba(255,255,255,.04);padding:8px 4px;border-radius:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.cbtn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:11px;text-align:left;color:#fff;cursor:pointer}
+.cbtn.active{background:rgba(255,0,85,.2);border-color:#ff0055;box-shadow:0 0 15px rgba(255,0,85,.3)}
+.term{background:rgba(0,0,0,.75);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:14px}
+.msg{background:rgba(255,255,255,.05);border-radius:10px;padding:8px;font-size:12px;margin-bottom:8px}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(0,242,254,.3);color:#00f2fe;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:600;cursor:pointer}
+footer{text-align:center;padding:14px;font-size:11px;color:#6b7280;border-top:1px solid rgba(255,255,255,.08)}
+.wave{position:fixed;pointer-events:none;border-radius:50%;border:2px solid #00f2fe;box-shadow:0 0 15px #ff0055;width:20px;height:20px;transform:translate(-50%,-50%);animation:w .5s ease-out forwards;z-index:9999}
+@keyframes w{to{width:110px;height:110px;opacity:0}}
+.pop{position:fixed;pointer-events:none;z-index:9999;font-weight:800;font-size:11px;padding:3px 8px;border-radius:20px;background:#070510;border:1px solid #ff0055;color:#00f2fe;animation:up .6s ease-out forwards}
+@keyframes up{0%{transform:translate(-50%,0)}100%{transform:translate(-50%,-50px);opacity:0}}
+</style>
 </head>
-<body class="text-white min-h-screen flex flex-col justify-between selection:bg-pink-500 selection:text-white">
-
-  <!-- Background Music Audio Element -->
-  <audio id="bgAudio" preload="auto" loop></audio>
-
-  <!-- Sticky Top Pill Navigation -->
-  <header class="sticky top-0 z-50 px-3 py-2.5 backdrop-blur-xl bg-black/40 border-b border-white/10">
-    <div class="max-w-xl mx-auto flex items-center justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-pink-600 to-purple-600 flex items-center justify-center text-sm shadow-[0_0_12px_rgba(255,0,85,0.5)]">
-          🪦
-        </div>
-        <div>
-          <h1 class="font-display font-black text-xs sm:text-sm tracking-tight leading-none text-white">The Graveyard</h1>
-          <p class="text-[9px] text-pink-400 font-mono mt-0.5 font-bold">XO VIBE • 24/7</p>
-        </div>
-      </div>
-
-      <!-- Music Controller Pill -->
-      <div class="flex items-center gap-1.5 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full shadow-inner">
-        <button onclick="toggleMusic(event)" id="audioBtn" class="flex items-center gap-1.5 text-xs text-cyan-300 font-mono font-bold active:scale-95 transition-transform">
-          <i id="audioIcon" class="fa-solid fa-volume-xmark text-pink-500"></i>
-          <span id="trackName" class="text-[10px] max-w-[85px] truncate text-gray-200">Tap to Play</span>
-        </button>
-        <button onclick="nextTrack(event)" class="text-gray-400 hover:text-white text-[11px] px-1 active:scale-90 transition-transform">
-          <i class="fa-solid fa-forward-step"></i>
-        </button>
-      </div>
-
-      <!-- Quick Join Button -->
-      <a href="[https://discord.gg/qQSy9ggJmG](https://discord.gg/qQSy9ggJmG)" target="_blank" class="bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-[0_0_15px_rgba(255,0,85,0.4)] active:scale-95 transition-transform flex items-center gap-1">
-        <i class="fa-brands fa-discord"></i>
-        <span>Join</span>
-      </a>
+<body>
+<audio id="mp3" src="song.mp3" loop preload="auto"></audio>
+<header>
+  <div class="brand">
+    <div class="logo">🪦</div>
+    <div><b style="font-size:13px">The Graveyard</b><div style="font-size:9px;color:#ff0055;font-weight:700">XO VIBE • 24/7</div></div>
+  </div>
+  <div class="pill" onclick="toggleSound(event)" id="sBtn">🔊 Tap for Music</div>
+  <a href="//discord.gg/qQSy9ggJmG" target="_blank" class="btn-top">Join</a>
+</header>
+<main>
+  <div class="card">
+    <div class="live-tag">● Voice & Chat Active Now</div>
+    <h2>WELCOME TO<br><span class="neon">THE GRAVEYARD 🪦</span></h2>
+    <p class="sub">The ultimate late-night Discord community for chill hangouts, <b style="color:#ff0055">The Weeknd XO vibes</b>, gaming squads, aur fun!</p>
+    <a href="//discord.gg/qQSy9ggJmG" target="_blank" class="cta">Accept Invite & Join Server</a>
+    <button class="copy" onclick="copyInv(event)" id="cBtn">Copy Invite Link</button>
+    <div class="stats">
+      <div class="sbox"><b style="color:#ff0055;font-size:13px">24/7</b><div style="font-size:10px;color:#9ca3af">Main Chat</div></div>
+      <div class="sbox"><b style="color:#c084fc;font-size:13px">XO VIBE</b><div style="font-size:10px;color:#9ca3af">Night VCs</div></div>
+      <div class="sbox"><b style="color:#00f2fe;font-size:13px">GAMING</b><div style="font-size:10px;color:#9ca3af">Squads</div></div>
     </div>
-  </header>
-
-  <!-- Main Container -->
-  <main class="max-w-xl mx-auto px-4 py-6 w-full space-y-6">
-
-    <!-- Hero Card -->
-    <div class="p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/15 text-center relative overflow-hidden shadow-2xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold mb-3">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        Voice & Chat Active Now
-      </div>
-
-      <h2 class="font-display font-black text-2xl sm:text-4xl tracking-tight leading-tight mb-2">
-        WELCOME TO <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-400 drop-shadow-[0_0_20px_rgba(255,0,85,0.6)]">
-          THE GRAVEYARD 🪦
-        </span>
-      </h2>
-
-      <p class="text-gray-300 text-xs sm:text-sm max-w-sm mx-auto leading-relaxed mb-5">
-        The ultimate late-night Discord space for chill hangouts, <span class="text-pink-400 font-bold">The Weeknd XO vibes</span>, custom gaming lobbies, aur non-stop masti.
-      </p>
-
-      <div class="flex flex-col gap-2.5 max-w-xs mx-auto">
-        <a href="[https://discord.gg/qQSy9ggJmG](https://discord.gg/qQSy9ggJmG)" target="_blank" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-500 text-white font-extrabold text-sm shadow-[0_0_25px_rgba(255,0,85,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2">
-          <i class="fa-brands fa-discord text-base"></i>
-          <span>Accept Invite & Join Server</span>
-        </a>
-
-        <button onclick="copyInviteLink(event)" class="w-full py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 text-gray-300 font-bold text-xs hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-2">
-          <i class="fa-regular fa-copy text-cyan-400"></i>
-          <span id="copyText">Copy Invite Link</span>
-        </button>
-      </div>
-
-      <!-- Quick Highlights Strip -->
-      <div class="grid grid-cols-3 gap-2 mt-6 pt-5 border-t border-white/10">
-        <div class="p-2 rounded-xl bg-white/5 border border-white/5">
-          <p class="text-pink-400 font-black text-xs">24/7</p>
-          <p class="text-[10px] text-gray-400">Main Chat</p>
-        </div>
-        <div class="p-2 rounded-xl bg-white/5 border border-white/5">
-          <p class="text-purple-400 font-black text-xs">XO VIBE</p>
-          <p class="text-[10px] text-gray-400">Night VCs</p>
-        </div>
-        <div class="p-2 rounded-xl bg-white/5 border border-white/5">
-          <p class="text-cyan-400 font-black text-xs">GAMING</p>
-          <p class="text-[10px] text-gray-400">Custom Squads</p>
-        </div>
-      </div>
+  </div>
+  <div class="grid2">
+    <button class="cbtn active" id="b-chat" onclick="setCh('chat')"><b>#🪦・main-chat</b><div style="font-size:10px;color:#9ca3af">24/7 Hangout</div></button>
+    <button class="cbtn" id="b-vc" onclick="setCh('vc')"><b>#🔥・xo-lounge</b><div style="font-size:10px;color:#9ca3af">Music & VC</div></button>
+    <button class="cbtn" id="b-game" onclick="setCh('game')"><b>#🎮・gaming-room</b><div style="font-size:10px;color:#9ca3af">Custom Squads</div></button>
+    <button class="cbtn" id="b-media" onclick="setCh('media')"><b>#📸・media-flex</b><div style="font-size:10px;color:#9ca3af">Edits & Clips</div></button>
+  </div>
+  <div class="term">
+    <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:6px;margin-bottom:8px;font-size:11px;color:#ff0055;font-weight:700">
+      <span id="chTitle">#🪦・main-chat</span><span style="color:#34d399">● Live</span>
     </div>
-
-    <!-- Live Channel Experience Previewer -->
-    <div class="space-y-3">
-      <div class="text-center">
-        <span class="text-[10px] uppercase font-mono tracking-widest text-cyan-400 font-bold">⚡ Interactive Experience</span>
-        <h3 class="font-display font-black text-lg text-white">Inside The Graveyard Channels</h3>
-      </div>
-
-      <!-- Channel Buttons -->
-      <div class="grid grid-cols-2 gap-2">
-        <button onclick="selectChannel('chat')" id="btn-chat" class="p-3 rounded-2xl border text-left transition-all bg-pink-500/20 border-pink-500 text-white shadow-[0_0_15px_rgba(255,0,85,0.3)]">
-          <p class="font-mono text-xs font-bold truncate">#🪦・main-chat</p>
-          <p class="text-[10px] text-gray-300">Active late night talks</p>
-        </button>
-        <button onclick="selectChannel('vc')" id="btn-vc" class="p-3 rounded-2xl border text-left transition-all bg-white/5 border-white/10 text-gray-400 hover:text-white">
-          <p class="font-mono text-xs font-bold truncate">#🔥・xo-lounge</p>
-          <p class="text-[10px] text-gray-400">Music & Chill VC</p>
-        </button>
-        <button onclick="selectChannel('gaming')" id="btn-gaming" class="p-3 rounded-2xl border text-left transition-all bg-white/5 border-white/10 text-gray-400 hover:text-white">
-          <p class="font-mono text-xs font-bold truncate">#🎮・gaming-squad</p>
-          <p class="text-[10px] text-gray-400">Room match & BGMI/FF</p>
-        </button>
-        <button onclick="selectChannel('media')" id="btn-media" class="p-3 rounded-2xl border text-left transition-all bg-white/5 border-white/10 text-gray-400 hover:text-white">
-          <p class="font-mono text-xs font-bold truncate">#📸・media-flex</p>
-          <p class="text-[10px] text-gray-400">Edits, Clips & Memes</p>
-        </button>
-      </div>
-
-      <!-- Mock Chat Terminal Box -->
-      <div class="rounded-2xl bg-black/60 border border-white/15 p-4 space-y-3 font-sans shadow-xl">
-        <div class="flex items-center justify-between pb-2 border-b border-white/10 text-[11px] font-mono text-gray-400">
-          <span id="activeChannelHeader" class="text-pink-400 font-bold">#🪦・main-chat</span>
-          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Live</span>
-        </div>
-
-        <div id="messagesContainer" class="space-y-2.5 max-h-48 overflow-y-auto pr-1 text-xs">
-          <!-- Messages will load dynamically -->
-        </div>
-
-        <!-- Quick Reply Chips -->
-        <div class="pt-2 border-t border-white/10 flex flex-wrap gap-1.5">
-          <button onclick="sendQuickMessage('Yo, graveyard squad! 🪦🔥')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[10px] text-cyan-300 font-semibold active:scale-95 transition-transform">
-            Yo squad! 🔥
-          </button>
-          <button onclick="sendQuickMessage('The Weeknd XO vibe on repeat! 🎧')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[10px] text-pink-300 font-semibold active:scale-95 transition-transform">
-            XO Vibe! 🎧
-          </button>
-          <button onclick="sendQuickMessage('Koi gaming ke liye ready hai? 🎮')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[10px] text-purple-300 font-semibold active:scale-95 transition-transform">
-            Custom room? 🎮
-          </button>
-        </div>
-      </div>
+    <div id="chatBox" style="max-height:170px;overflow-y:auto"></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;padding-top:8px;border-top:1px solid rgba(255,255,255,.1)">
+      <button class="chip" onclick="addMsg('Yo Graveyard Squad! 🔥')">Yo Squad! 🔥</button>
+      <button class="chip" onclick="addMsg('XO Vibe on repeat 🎧')">XO Vibe 🎧</button>
+      <button class="chip" onclick="addMsg('Custom room ready? 🎮')">Gaming? 🎮</button>
     </div>
-  </main>
-
-  <!-- Clean Footer -->
-  <footer class="py-5 text-center border-t border-white/10 bg-black/40 text-[11px] text-gray-500 font-mono">
-    <p>© 2026 The Graveyard 🪦 • Built for the XO Crew</p>
-  </footer>
-
-  <script>
-    // Playlist with reliable streams
-    const playlist = [
-      {
-        title: "Blinding Lights",
-        url: "[https://actions.google.com/sounds/v1/science_fiction/scifi_synth_loop.ogg](https://actions.google.com/sounds/v1/science_fiction/scifi_synth_loop.ogg)" // Reliable audio synth track
-      },
-      {
-        title: "Starboy Vibe",
-        url: "[https://actions.google.com/sounds/v1/science_fiction/ambient_space_hum.ogg](https://actions.google.com/sounds/v1/science_fiction/ambient_space_hum.ogg)"
-      },
-      {
-        title: "After Hours",
-        url: "[https://actions.google.com/sounds/v1/transportation/subway_departing.ogg](https://actions.google.com/sounds/v1/transportation/subway_departing.ogg)"
-      }
-    ];
-
-    let currentTrackIdx = 0;
-    const audio = document.getElementById('bgAudio');
-    const audioIcon = document.getElementById('audioIcon');
-    const trackName = document.getElementById('trackName');
-
-    function loadTrack(idx) {
-      audio.src = playlist[idx].url;
-      trackName.innerText = playlist[idx].title;
-    }
-
-    loadTrack(0);
-
-    function toggleMusic(e) {
-      if (e) e.stopPropagation();
-      if (audio.paused) {
-        audio.play().then(() => {
-          audioIcon.className = "fa-solid fa-volume-high text-cyan-400";
-        }).catch(() => {
-          console.log("Audio play blocked");
-        });
-      } else {
-        audio.pause();
-        audioIcon.className = "fa-solid fa-volume-xmark text-pink-500";
-      }
-    }
-
-    function nextTrack(e) {
-      if (e) e.stopPropagation();
-      currentTrackIdx = (currentTrackIdx + 1) % playlist.length;
-      loadTrack(currentTrackIdx);
-      audio.play().then(() => {
-        audioIcon.className = "fa-solid fa-volume-high text-cyan-400";
-      }).catch(() => {});
-    }
-
-    // Touch Feedback & Shockwaves
-    const badgeTexts = ["🪦 GRAVEYARD!", "🔥 XO VIBE!", "💀 LATE NIGHT!", "👑 LEGEND!"];
-    const colors = ["#ff0055", "#00f2fe", "#7928ca", "#ffffff"];
-
-    document.addEventListener('pointerdown', (e) => {
-      // Auto-start music on very first user tap
-      if (audio.paused && audio.currentTime === 0) {
-        audio.play().then(() => {
-          audioIcon.className = "fa-solid fa-volume-high text-cyan-400";
-        }).catch(() => {});
-      }
-
-      // 1. Shockwave ring
-      const ring = document.createElement('div');
-      ring.className = 'shockwave-ring';
-      ring.style.left = e.clientX + 'px';
-      ring.style.top = e.clientY + 'px';
-      document.body.appendChild(ring);
-      setTimeout(() => ring.remove(), 600);
-
-      // 2. Sparkle particles
-      for (let i = 0; i < 8; i++) {
-        const p = document.createElement('div');
-        p.className = 'touch-sparkle';
-        const size = Math.random() * 6 + 4;
-        p.style.width = size + 'px';
-        p.style.height = size + 'px';
-        p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        p.style.left = e.clientX + 'px';
-        p.style.top = e.clientY + 'px';
-        const angle = Math.random() * Math.PI * 2;
-        const dist = Math.random() * 45 + 15;
-        p.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
-        p.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), 600);
-      }
-
-      // 3. Floating Badge
-      const badge = document.createElement('div');
-      badge.className = 'pop-badge';
-      badge.style.left = e.clientX + 'px';
-      badge.style.top = e.clientY + 'px';
-      badge.style.backgroundColor = 'rgba(7, 5, 13, 0.85)';
-      badge.style.border = '1px solid #ff0055';
-      badge.style.color = '#00f2fe';
-      badge.innerText = badgeTexts[Math.floor(Math.random() * badgeTexts.length)];
-      document.body.appendChild(badge);
-      setTimeout(() => badge.remove(), 700);
-
-      // Vibration on phone
-      if (navigator.vibrate) {
-        navigator.vibrate(15);
-      }
-    });
-
-    // Interactive Channel Chats
-    const channelData = {
-      chat: {
-        title: "#🪦・main-chat",
-        messages: [
-          { user: "Uday (Admin)", color: "text-pink-400", time: "11:45 PM", text: "Graveyard server public ho gaya hai, welcome everyone! 🪦" },
-          { user: "NeonGhost", color: "text-cyan-400", time: "11:46 PM", text: "XO playlist loop pe chal rahi hai bhai!" },
-          { user: "CyberSoul", color: "text-purple-400", time: "11:47 PM", text: "Late night vibes hitting hard 🔥" }
-        ]
-      },
-      vc: {
-        title: "#🔥・xo-lounge",
-        messages: [
-          { user: "Voice Bot", color: "text-emerald-400", time: "11:30 PM", text: "Now Streaming: The Weeknd - After Hours 🎶" },
-          { user: "Karan", color: "text-cyan-400", time: "11:35 PM", text: "VC join karo sab log mic chalu hai" }
-        ]
-      },
-      gaming: {
-        title: "#🎮・gaming-squad",
-        messages: [
-          { user: "ShadowSniper", color: "text-pink-400", time: "11:40 PM", text: "Custom squad room ban raha hai, code discord pe aayega!" },
-          { user: "Phantom", color: "text-yellow-400", time: "11:42 PM", text: "Slot reserve kar lo bhai fatfat 🎮" }
-        ]
-      },
-      media: {
-        title: "#📸・media-flex",
-        messages: [
-          { user: "Editor_Boy", color: "text-cyan-400", time: "11:15 PM", text: "New The Weeknd AMV edit dropped! Check it out." },
-          { user: "Uday", color: "text-pink-400", time: "11:20 PM", text: "Insane transition bhai 🔥" }
-        ]
-      }
-    };
-
-    function renderChannel(key) {
-      const data = channelData[key];
-      document.getElementById('activeChannelHeader').innerText = data.title;
-      const container = document.getElementById('messagesContainer');
-      container.innerHTML = data.messages.map(m => `
-        <div class="flex items-start gap-2 bg-white/5 p-2 rounded-xl border border-white/5">
-          <div class="w-6 h-6 rounded-lg bg-white/10 flex items-center justify-center font-bold text-[10px] text-white">
-            ${m.user.charAt(0)}
-          </div>
-          <div class="flex-1">
-            <div class="flex items-center gap-1.5">
-              <span class="${m.color} font-bold text-[11px]">${m.user}</span>
-              <span class="text-[9px] text-gray-500">${m.time}</span>
-            </div>
-            <p class="text-gray-200 mt-0.5">${m.text}</p>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function selectChannel(key) {
-      ['chat', 'vc', 'gaming', 'media'].forEach(k => {
-        const b = document.getElementById('btn-' + k);
-        if (k === key) {
-          b.className = "p-3 rounded-2xl border text-left transition-all bg-pink-500/20 border-pink-500 text-white shadow-[0_0_15px_rgba(255,0,85,0.3)]";
-        } else {
-          b.className = "p-3 rounded-2xl border text-left transition-all bg-white/5 border-white/10 text-gray-400 hover:text-white";
-        }
-      });
-      renderChannel(key);
-    }
-
-    renderChannel('chat');
-
-    function sendQuickMessage(text) {
-      const container = document.getElementById('messagesContainer');
-      const newMsg = document.createElement('div');
-      newMsg.className = "flex items-start gap-2 bg-pink-500/10 p-2 rounded-xl border border-pink-500/30 animate-pulse";
-      newMsg.innerHTML = `
-        <div class="w-6 h-6 rounded-lg bg-pink-600 flex items-center justify-center font-bold text-[10px] text-white">
-          U
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-1.5">
-            <span class="text-pink-300 font-bold text-[11px]">You (Guest)</span>
-            <span class="text-[9px] text-gray-400">Just now</span>
-          </div>
-          <p class="text-white mt-0.5">${text}</p>
-        </div>
-      `;
-      container.appendChild(newMsg      );
-      container.scrollTop = container.scrollHeight;
-    }
-
-    function copyInviteLink(e) {
-      if (e) e.stopPropagation();
-      navigator.clipboard.writeText("https://discord.gg/qQSy9ggJmG").then(() => {
-        const t = document.getElementById('copyText');
-        t.innerText = "Copied to Clipboard! ✓";
-        setTimeout(() => t.innerText = "Copy Invite Link", 2500);
-      });
-    }
-  </script>
+  </div>
+</main>
+<footer>© 2026 The Graveyard 🪦 • Created by Uday</footer>
+<script>
+let ctx,playing=false,timer;
+const mp3=document.getElementById('mp3'),sBtn=document.getElementById('sBtn');
+function startSynth(){
+  if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();
+  if(ctx.state==='suspended')ctx.resume();
+  const notes=[110,130.8,146.8,164.8,130.8,146.8,98,110];let step=0;
+  clearInterval(timer);
+  timer=setInterval(()=>{
+    if(!playing)return;
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.type='sawtooth';o.frequency.setValueAtTime(notes[step%notes.length],ctx.currentTime);
+    g.gain.setValueAtTime(0.08,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.25);
+    o.connect(g);g.connect(ctx.destination);
+    o.start();o.stop(ctx.currentTime+0.25);step++;
+  },260);
+}
+function toggleSound(e){
+  if(e)e.stopPropagation();
+  playing=!playing;
+  if(playing){
+    sBtn.innerText="🔊 Playing XO Vibe";
+    mp3.play().catch(()=>startSynth());
+    if(mp3.error||!mp3.currentSrc)startSynth();
+  }else{
+    sBtn.innerText="🔇 Music Paused";
+    mp3.pause();clearInterval(timer);
+  }
+}
+const tags=["🪦 GRAVEYARD!","🔥 XO VIBE!","💀 LATE NIGHT!","👑 UDAY!"];
+document.addEventListener('pointerdown',e=>{
+  if(!playing)toggleSound();
+  const w=document.createElement('div');w.className='wave';w.style.left=e.clientX+'px';w.style.top=e.clientY+'px';
+  document.body.appendChild(w);setTimeout(()=>w.remove(),500);
+  const p=document.createElement('div');p.className='pop';p.style.left=e.clientX+'px';p.style.top=e.clientY+'px';
+  p.innerText=tags[Math.floor(Math.random()*tags.length)];
+  document.body.appendChild(p);setTimeout(()=>p.remove(),600);
+});
+const data={
+  chat:[{u:"Uday (Admin)",c:"#ff0055",m:"Welcome to The Graveyard! Server live hai 🪦"},{u:"NeonXO",c:"#00f2fe",m:"Late night vibe on top 🔥"}],
+  vc:[{u:"Music Bot",c:"#34d399",m:"Now Playing: The Weeknd - Blinding Lights 🎶"},{u:"Karan",c:"#00f2fe",m:"Aao sab VC mein chill karte hain!"}],
+  game:[{u:"Shadow",c:"#ff0055",m:"BGMI / FF custom room ban raha hai aao 🎮"}],
+  media:[{u:"Editor",c:"#c084fc",m:"New XO aesthetic edit posted! 📸"}]
+};
+function setCh(k){
+  ['chat','vc','game','media'].forEach(x=>document.getElementById('b-'+x).classList.toggle('active',x===k));
+  document.getElementById('chTitle').innerText='#・'+k;
+  const b=document.getElementById('chatBox');
+  b.innerHTML=data[k].map(x=>`<div class="msg"><b style="color:${x.c}">${x.u}:</b> ${x.m}</div>`).join('');
+}
+setCh('chat');
+function addMsg(t){
+  const b=document.getElementById('chatBox');
+  b.innerHTML+=`<div class="msg" style="border:1px solid #ff0055"><b style="color:#00f2fe">You:</b> ${t}</div>`;
+  b.scrollTop=b.scrollHeight;
+}
+function copyInv(e){
+  e.stopPropagation();
+  navigator.clipboard.writeText('https:'+'//discord.gg/qQSy9ggJmG');
+  document.getElementById('cBtn').innerText="Copied Invite Link! ✓";
+}
+</script>
 </body>
 </html>
